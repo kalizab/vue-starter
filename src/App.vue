@@ -5,6 +5,7 @@
 
     <div v-if="authenticatedUsername != ''">
         <h3>Jesteś zalogowany jako: {{ authenticatedUsername}}</h3>
+        <meeting-page></meeting-page>
         <a @click="logMeOut()">Wyloguj</a>
     </div>
 
@@ -17,10 +18,10 @@
 <script>
 import "milligram";
 import LoginForm from "./LoginForm";
-
+import MeetingPage from "./meetings/MeetingPage";
 
 export default {
-  components: {LoginForm},
+  components: {LoginForm, MeetingPage},
   data() {
   return {
     authenticatedUsername: ''
