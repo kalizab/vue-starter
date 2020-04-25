@@ -10,20 +10,11 @@
 
 
     <div v-else>
-      <!-- <input type="text" v-model="email">
-      <button @click="logMeIn()">Zaloguj</button> -->
       <login-form @login="logMeIn($event)"></login-form>
+      <login-form @login="logMeIn($event)" button-label="Wejdź"></login-form>
+      <login-form @login="logMeIn($event)" button-label="Wleć"></login-form>
+      <login-form @login="logMeIn($event)" :button-label="Math.random() < 0.5 ? 'Etykieta A' : 'Etykieta B'"></login-form>
     </div>
-    <!-- <h1>Twój email to: {{ email }}</h1> -->
-    <!-- <div v-if="email.length < 10">Ale masz krótki adres!</div>
-    <div v-else-if="email.length < 15">Twój adres e-mail jest w sam raz.</div>
-    <div v-else>Twój adres e-mail jest stanowczo za długi.</div> -->
-    <!-- <div>Zaloguj się e-mailem</div> -->
-    <!-- <input type="email" v-model="email"> -->
-    <!-- <button @click="alertMyEmail()">Wyświetl mój e-mail w alercie</button> -->
-    <!-- <button @click="alertMyEmail()">Wchodzę</button> -->
-
-
   </div>
 </template>
 
