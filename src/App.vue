@@ -1,12 +1,12 @@
 <template>
 
   <div>
-    <h1>Witaj w systemie do zapisów na zajęcia</h1>
+    <h1>System do zapisów na zajęcia</h1>
 
     <div v-if="authenticatedUsername != ''">
-        <h3>Jesteś zalogowany jako: {{ authenticatedUsername}}</h3>
+        <h3>Witaj {{ authenticatedUsername}} !</h3>        
+        <button @click="logMeOut()">Wyloguj</button>
         <meeting-page></meeting-page>
-        <a @click="logMeOut()">Wyloguj</a>
     </div>
 
     <div v-else>
