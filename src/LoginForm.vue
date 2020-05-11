@@ -17,6 +17,7 @@ export default {
  methods: {
      enter() {
          this.$emit('login', this.email);
+         localStorage.setItem('loginUser', JSON.stringify(this.email));
      }
  },
 

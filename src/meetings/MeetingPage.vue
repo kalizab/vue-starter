@@ -1,5 +1,5 @@
 <template>
-    <div v-if="meetings.length == 0">
+    <div v-if="meetings === null">
         <button @click="loadAddNewMeeting">Dodaj nowe spotkanie</button>
         <div
             v-if="buttonClicked">
@@ -28,13 +28,17 @@ export default {
   data() {
       return {
           buttonClicked: false,
-          meetings: []
+          meetings: JSON.parse(localStorage.getItem('meetings'))
       };
   },
   methods: {
       addNewMeeting(meeting) {
+          if (this.meetings === null){
+              this.meetings = []
+          }
           this.meetings.push(meeting);
           this.buttonClicked = false;
+          localStorage.setItem('meetings', JSON.stringify(this.meetings));
       },
       loadAddNewMeeting() {
       this.buttonClicked = !this.buttonClicked;

@@ -5,8 +5,12 @@
 
     <div v-if="authenticatedUsername != ''">
         <h3>Witaj {{ authenticatedUsername}} !</h3>        
-        <button @click="logMeOut()">Wyloguj</button>
+        <button style="float: right;" @click="logMeOut()">Wyloguj</button>
         <meeting-page></meeting-page>
+    </div>
+
+    <div v-else-if="authenticatedUsername == null">
+      <login-form @login="logMeIn($event)"></login-form>
     </div>
 
     <div v-else>
@@ -24,15 +28,19 @@ export default {
   components: {LoginForm, MeetingPage},
   data() {
   return {
-    authenticatedUsername: ''
+    authenticatedUsername: JSON.parse(localStorage.getItem('authenticatedUsername'))
   };
 },
   methods: {
     logMeIn(username) {
       this.authenticatedUsername = username;
+      localStorage.setItem('authenticatedUsername', JSON.stringify(this.authenticatedUsername));
+
     },
     logMeOut() {
-      this.authenticatedUsername = '';
+      this.authenticatedUsername = '';        
+       localStorage.setItem('authenticatedUsername', JSON.stringify(this.authenticatedUsername));
+       localStorage.setItem('loginUser', JSON.stringify(this.authenticatedUsername));
     }
   }
 }
