@@ -43,6 +43,9 @@ export default {
         if (username == null){
             return false;
         }
+        else if (username === "") {
+            return false;
+        }
         else{
             return true
         }
